@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Impact", "Arial Black", sans-serif;
+}
+
+.machine {
+    width: 500px;
+    height: 400px;
+    border: 8px solid gold;
+    box-shadow: 0 0 30px red;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    text-align: center;
+}
+
+.number {
+    font-size: 120px;
+    color: white;
+    text-shadow: 0 0 20px red, 0 0 40px yellow;
+    line-height: 300px;
+}
+
+button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    padding: 10px 30px;
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 10px yellow;
+}
