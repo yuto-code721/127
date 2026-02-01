@@ -5,13 +5,13 @@ const startBtn = document.getElementById("startBtn");
 let images = [];
 let interval = null;
 
-// images.txt を読み込む（http / https で自動区切り）
+// images.txt を読み込む（http/https が来たら区切る）
 fetch("images.txt")
     .then(res => res.text())
     .then(text => {
-        // http:// または https:// で始まるURLをすべて取得
-        images = text.match(/https?:\/\/[^\s]+/g) || [];
-        console.log("読み込んだ画像数:", images.length);
+        // 次の http(s) の直前で分割
+        images = text.match(/https?:\/\/.*?(?=https?:\/\/|$)/g) || [];
+        console.log("画像数:", images.length);
     });
 
 startBtn.addEventListener("click", () => {
@@ -24,10 +24,10 @@ startBtn.addEventListener("click", () => {
         const img = images[Math.floor(Math.random() * images.length)];
 
         numberEl.textContent = num;
-        machineEl.style.backgroundImage = `url(${img})`;
-    }, 80); // 回転速度
+        machineEl.style.backgroundImage = `url("${img}")`;
+    }, 80);
 
     setTimeout(() => {
         clearInterval(interval);
-    }, 3000); // 停止時間
+    }, 3000);
 });
